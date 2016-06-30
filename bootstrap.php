@@ -17,12 +17,16 @@ $config = Setup::createYAMLMetadataConfiguration(
     $isDevMode
 );
 
+// env varible for db
+$url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+
 // the connection configuration
 $dbParams = array(
     'driver'   => 'pdo_mysql',
-    'user'     => 'webler',
-    'password' => '123123q',
-    'dbname'   => 'doctrine',
+    'user'     => $url["user"],
+    'password' => $url["pass"],
+    'dbname'   => substr($url["path"], 1),
+    'host'     => $url["host"],
 );
 
 // obtaining the entity manager
