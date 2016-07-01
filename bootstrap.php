@@ -40,4 +40,4 @@ if (count($url) > 1) {
 }
 
 // obtaining the entity manager
-$entityManager = EntityManager::create($dbParams, $config);
+$em = EntityManager::create($dbParams, $config);

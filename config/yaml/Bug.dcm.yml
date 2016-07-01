@@ -1,0 +1,15 @@
+Bug:
+  type: entity
+  table: bugs
+  id:
+    id:
+      type: integer
+      generator:
+        strategy: AUTO
+  fields:
+    description:
+      type: string
+    created:
+      type: datetime
+    status:
+      type: string

@@ -1,31 +1,20 @@
 <?php
 
-use Doctrine\Common\Collections\ArrayCollection;
-
 /**
- * Class User
+ * Created by PhpStorm.
+ * Date: 02.07.16
+ * Time: 1:16
  */
-class User
+class Product
 {
     /**
      * @var int
      */
     protected $id;
-
     /**
      * @var string
      */
     protected $name;
-
-    protected $reportedBugs;
-
-    protected $assignedBugs;
-
-    public function __construct()
-    {
-        $this->reportedBugs = new ArrayCollection();
-        $this->assignedBugs = new ArrayCollection();
-    }
 
     public function getId()
     {
