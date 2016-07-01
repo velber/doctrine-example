@@ -21,9 +21,23 @@ $config = Setup::createYAMLMetadataConfiguration(
 $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
 
 // the connection configuration
-$dbParams = array(
-    'url' => getenv("CLEARDB_DATABASE_URL"),
+if (count($url) > 1) {
+    $dbParams = array(
+        'driver'   => 'pdo_mysql',
+        'user'     => $url["user"],
+        'password' => $url["pass"],
+        'dbname'   => substr($url["path"], 1),
+        'host'     => $url["host"] ,
     );
+} else {
+    $dbParams = array(
+        'driver'   => 'pdo_mysql',
+        'user'     => 'webler',
+        'password' => '123123q',
+        'dbname'   => 'doctrine',
+        'host'     => 'localhost' ,
+    );
+}
 
 // obtaining the entity manager
 $entityManager = EntityManager::create($dbParams, $config);
