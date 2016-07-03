@@ -29,6 +29,8 @@ class Bug
     protected $status;
 
     protected $products;
+    protected $reporter;
+    protected $engineer;
 
     public function __construct()
     {
@@ -68,5 +70,27 @@ class Bug
     public function setStatus($status)
     {
         $this->status = $status;
+    }
+
+    public function setEngineer($engineer)
+    {
+        $engineer->assignedToBug($this);
+        $this->engineer = $engineer;
+    }
+
+    public function setReporter($reporter)
+    {
+        $reporter->addReportBug($this);
+        $this->reporter = $reporter;
+    }
+
+    public function getEngineer()
+    {
+        return $this->engineer;
+    }
+
+    public function getReporter()
+    {
+        return $this->reporter;
     }
 }

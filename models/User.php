@@ -17,9 +17,9 @@ class User
      */
     protected $name;
 
-    protected $reportedBugs;
+    protected $reportedBugs = null;
 
-    protected $assignedBugs;
+    protected $assignedBugs = null;
 
     public function __construct()
     {
@@ -40,5 +40,15 @@ class User
     public function setName($name)
     {
         $this->name = $name;
+    }
+
+    public function addReportedBug($bug)
+    {
+        $this->reportedBugs[] = $bug;
+    }
+
+    public function assignBug($bug)
+    {
+        $this->assignedBugs[] = $bug;
     }
 }
